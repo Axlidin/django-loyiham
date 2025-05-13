@@ -1,0 +1,52 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Mahalliy xabarlar{% endblock title %}
+{% block content %}
+{% for news in page_obj %}
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-8">
+                <a href="{{news.get_absolute_url}}">
+                    <img src="{{ news.image.url}}" alt="{{ news.title}}" style="width:30%">
+                    <h2>{{ news.title }}</h2>
+                </a>
+            </div>
+        </div>
+    </div>
+{% endfor %}
+<div>
+    <ul class="pagination">
+    {% if page_obj.has_previous %}
+        <li class="page-item"><a class="page-link" href="?page=1">first</a></li>
+        <li class="page-item"><a class="page-link" href="?page={{ page_obj.previous_page_number }}">previous</a></li>
+    {% endif %}
+
+    <li class="page-item active">
+        <a class="page-link" href="#">{{ page_obj.number }}</a>
+    </li>
+
+    {% if page_obj.has_next %}
+        <li class="page-item"><a href="?page={{ page_obj.next_page_number }}" class="page-link">next</a></li>
+        <li class="page-item"><a class="page-link" href="?page={{ page_obj.paginator.num_pages }}">last</a></li><li class="page-item"></li>
+    {% endif %}
+    </ul>
+</div>
+<!--<div class="pagination">-->
+<!--    <span class="step-links">-->
+<!--        {% if page_obj.has_previous %}-->
+<!--            <a href="?page=1">&laquo; first</a>-->
+<!--            <a href="?page={{ page_obj.previous_page_number }}">previous</a>-->
+<!--        {% endif %}-->
+
+<!--        <span class="current active">-->
+<!--            {{ page_obj.number }}-->
+<!--        </span>-->
+
+<!--        {% if page_obj.has_next %}-->
+<!--            <a href="?page={{ page_obj.next_page_number }}">next</a>-->
+<!--            <a href="?page={{ page_obj.paginator.num_pages }}">last &raquo;</a>-->
+<!--        {% endif %}-->
+<!--    </span>-->
+<!--</div>-->
+
+{% endblock content %}

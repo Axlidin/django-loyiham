@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Qidiruv saxifasi{% endblock title %}
+
+{% block content %}
+<h1>Qidiruv natijalari:</h1>
+{% if searching_lists %}
+    {% for searching_list in searching_lists %}
+    <a
+            href="{% url 'newsapp:detail_page' searching_list.slug %}"><p>{{searching_list.title}}</p>
+            <img src="{{ searching_list.image.url }}" alt="{{searching_list.title}}" style="width: 25%">
+            <p>{{searching_list.title|truncatewords:10 }}</p>
+    </a>
+    {% endfor %}
+{% else %}
+    <p>Qidiruv natijasi mavjud emas</p>
+{% endif %}
+{% endblock content %}

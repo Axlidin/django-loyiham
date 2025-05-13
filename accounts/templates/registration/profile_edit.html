@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Profil tahrirlash sahifasi{% endblock title %}
+
+{% block content %}
+<h1>Foydalanuvchi profilini tahrirlash sahifasi</h1>
+<p>O'zingizning ma'lumotlaringizni yangilashingiz uchun quyidagi formani to'ldiring</p>
+<form method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    {{ user_form.as_p }}
+    {{ profile_form.as_p }}
+    <button type="submit">Yangilanishni saqlash</button>
+</form>
+{% endblock %}

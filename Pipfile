@@ -6,6 +6,10 @@ name = "pypi"
 [packages]
 pillow = "*"
 django = "*"
+django-hitcount = "*"
+django-modeltranslation = "*"
+python-decouple = "*"
+whitenoise = "*"
 
 [dev-packages]
 
